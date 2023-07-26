@@ -10,7 +10,8 @@ function Board() {
 
   useEffect(() => {
     const word = words[Math.floor(Math.random() * words.length)];
-    setSolution(word);
+    setSolution(word.toLowerCase());
+    console.log(word);
   }, []);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ function Board() {
       }
 
       if (currentGuess.length >= 5) return;
-      setCurrentGuess(currentGuess + e.key);
+      setCurrentGuess((oldguess) => oldguess + e.key);
     };
 
     window.addEventListener("keydown", handleType);
@@ -54,6 +55,8 @@ function Board() {
         const isCurrentGuess = i === guesses.findIndex((val) => val == null);
         return (
           <Row
+            solution={solution}
+            isFinal={!currentGuess && guess != null}
             key={i}
             rowKey={i}
             guess={isCurrentGuess ? currentGuess : guess ?? ""}
