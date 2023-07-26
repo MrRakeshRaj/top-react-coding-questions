@@ -33,13 +33,13 @@
 
 
 # React Coding Questions
-## Top React coding interview questions to build the most commonly-asked front end UI components and applications.
+### Top React coding interview questions to build the most commonly-asked front end UI components and applications.
 
 ### 1. Wordle
-#### Build Worlde, the word guessing game.
+Build Worlde, the word guessing game.
 
 
 
-### One new question will be added everyday...
+One new question will be added everyday...
 
 
