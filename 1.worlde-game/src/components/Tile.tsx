@@ -1,7 +1,10 @@
-function Tile({ char }) {
+function Tile({ char, tileKey }) {
   return (
     <>
-      <div className="tile border-black border-2 border-solid w-10 h-10 rounded-lg">
+      <div
+        key={tileKey}
+        className="tile border-black border-2 border-solid w-10 h-10 rounded-lg uppercase text-2xl flex justify-center items-center"
+      >
         {char}
       </div>
     </>
