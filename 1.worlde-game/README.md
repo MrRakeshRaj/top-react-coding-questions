@@ -13,10 +13,9 @@ The green color tells the user that the letter is in the secret word and in the 
 
 ## Screencast
 
-https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/f68252d9-3297-4867-93a0-b2b19f4ef642
+https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/4ce2cf69-4752-4ca2-917b-5084b0b3688d
 
-https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/02da95fe-0108-40bc-bb73-402a0bdd160f
-
+https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/26b868de-70e1-4705-b9da-e656b179849d
 
 ## Tech Stack Used
 React, Vite, Typescript, Tailwind CSS, Animate CSS
