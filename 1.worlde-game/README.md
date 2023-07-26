@@ -3,13 +3,13 @@
 In Wordle, there is a secret five-letter word. The player has six tries and must guess different five-letter words to see how close they are to the secret word.
 
 
-<img width="391" alt="Screenshot 2023-07-26 at 21 02 40" src="https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/f0dc2c32-45ff-4c7b-a67b-83c41211682a">
+<img width="391" alt="wordle board" src="https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/f0dc2c32-45ff-4c7b-a67b-83c41211682a">
 
 After the player submits a guess, Wordle uses colors to tell the player how close they are to the secret word. If a letter has the color yellow, it means that the letter is in the secret word, but in the wrong position.
 
 The green color tells the user that the letter is in the secret word and in the right position, while the grey color tells the player that the letter is not in the word.
 
-<img width="526" alt="Screenshot 2023-07-26 at 21 01 08" src="https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/edf96360-549b-4a7f-904f-df776bb86406">
+<img width="526" alt="wordle rules" src="https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/edf96360-549b-4a7f-904f-df776bb86406">
 
 ## Explanation & Setup
 
@@ -20,6 +20,108 @@ NPM Package must be installed to create one. Open your terminal and run the foll
 npm create vite@latest
 ```
 
+2. Creating Board UI
+
+<img width="400" alt="wordle board ui" src="https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/d2acd7a9-1d17-483e-86c0-44b5c124511a">
+
+```
+const [guesses, setGuesses] = useState(Array(6).fill(null));
+
+{guesses.map((guess, i) => {
+    const isCurrentGuess = i === guesses.findIndex((val) => val == null);
+    return (
+      <Row
+        solution={solution}
+        isFinal={!currentGuess && guess != null}
+        key={i}
+        rowKey={i}
+        guess={isCurrentGuess ? currentGuess : guess ?? ""}
+    />
+  );
+})}
+```
+
+First I have divided the UI into 3 parts mainly
+Board > 6 Rows (for 6 attempts) > Tiles (each row having 5 input boxes)
+
+To render the board with five boxes in each of the six rows using HTML elements, use nested loops to iterate and create the elements. Finally, append them to the board. here I have used map method for the same.
+
+3. Adding the Keyboard and Listening to Keyboard Input
+we can listen to keyboard events using window object with addEventListener.
+
+```
+window.addEventListener("keydown", handleType);
+   
+window.removeEventListener("keydown", handleType);
+```
+
+5. Evaluating the Player’s Guess. 
+Once the UI gets loaded, next we need to handle type events on the keyboard
+
+cases:
+- ensure user only types alphabets from a-z
+- if user clicks the Enter button, check if the guess has been made and based on that change the class name for that particular tile
+- if user clicks on backspace remove the entered character from the tile
+- if user types anything other than the above mentioned keys, do nothing
+
+Crux of the project:
+- When handling key presses we can detect backspace with 'event.key' of "Backspace" and detect enter with 'event.key' of "Enter"
+- Consider keeping 3 pieces of state, the solution, the current guess and the array of finalized gusses.
+
+```
+setCurrentGuess((prevGuess) => {
+        if (e.key === "Enter" && prevGuess.length === WORD_LENGTH) {
+          const guessesClone = [...guesses];
+          guessesClone[guesses.findIndex((guess) => guess == null)] = prevGuess;
+          setGuesses(guessesClone);
+          const isCorrect = prevGuess === solution;
+          if (isCorrect) {
+            message.current = "You Won!!!";
+          }
+          return "";
+        } else if (e.key === "Backspace") {
+          return prevGuess.slice(0, -1);
+        } else if (prevGuess.length < WORD_LENGTH && isLetter) {
+          return prevGuess + e.key.toLowerCase();
+        }
+        return prevGuess;
+      });
+    };
+```
+
+```
+const charCode = e.key.toLowerCase().charCodeAt(0);
+const isLetter =
+        e.key.length === 1 &&
+        charCode >= "a".charCodeAt(0) &&
+        charCode <= "z".charCodeAt(0);
+```
+the above code determines if the user entered a char from a-z
+
+
+6. Setting CSS colors for the tiles
+```
+for (let i = 0; i < WORD_LENGTH; i++) {
+    const char = guess[i];
+    let applyStyles =
+      "tile border-black border-2 border-solid w-10 h-10 rounded-lg uppercase text-2xl flex justify-center items-center";
+    if (isFinal) {
+      if (char === solution[i]) {
+        applyStyles += " bg-green-500";
+      } else if (solution.includes(char)) {
+        applyStyles += " bg-yellow-500";
+      } else {
+        applyStyles += " bg-gray-400";
+      }
+    }
+
+    tiles.push(
+      <Tile key={i} applyStyles={applyStyles} tileKey={i} char={char} />
+    );
+  }
+```
+getting each char from the guess array and checking the same with solution string and respectively giving the class names.
+  
 
 
 
