@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { words } from "../words";
 import Row from "./Row";
 
@@ -9,7 +9,7 @@ function Board() {
   const [solution, setSolution] = useState("");
   const [guesses, setGuesses] = useState(Array(6).fill(null));
   const [currentGuess, setCurrentGuess] = useState("");
-  // const [isGameOver, setIsGameOver] = useState(false);
+  const message = useRef("Start guessing...");
 
   useEffect(() => {
     const word = words[Math.floor(Math.random() * words.length)];
@@ -21,6 +21,7 @@ function Board() {
     if (!solution) return;
 
     const handleType = (e) => {
+      message.current = "";
       if (guesses.includes(solution) || guesses[NUM_OF_GUESSES - 1] != null)
         return;
 
@@ -35,6 +36,10 @@ function Board() {
           const guessesClone = [...guesses];
           guessesClone[guesses.findIndex((guess) => guess == null)] = prevGuess;
           setGuesses(guessesClone);
+          const isCorrect = prevGuess === solution;
+          if (isCorrect) {
+            message.current = "You Won!!!";
+          }
           return "";
         } else if (e.key === "Backspace") {
           return prevGuess.slice(0, -1);
@@ -43,20 +48,6 @@ function Board() {
         }
         return prevGuess;
       });
-
-      // if (e.key === "Enter") {
-      //   if (currentGuess.length != 5) return;
-
-      //   const newGuesses = [...guesses];
-      //   newGuesses[guesses.findIndex((val) => val == null)] = currentGuess;
-      //   setGuesses(newGuesses);
-      //   setCurrentGuess("");
-
-      //   const isCorrect = currentGuess === solution;
-      //   if (isCorrect) {
-      //     setIsGameOver(true);
-      //     return;
-      //   }
     };
 
     window.addEventListener("keydown", handleType);
@@ -66,21 +57,29 @@ function Board() {
     };
   }, [solution, guesses]);
 
+  if (guesses[NUM_OF_GUESSES - 1] != null)
+    message.current = `You Lost!!!. The word was '${solution.toUpperCase()}'.`;
+
   return (
-    <div className="board flex flex-col gap-3 animate__animated animate__slideInLeft">
-      {guesses.map((guess, i) => {
-        const isCurrentGuess = i === guesses.findIndex((val) => val == null);
-        return (
-          <Row
-            solution={solution}
-            isFinal={!currentGuess && guess != null}
-            key={i}
-            rowKey={i}
-            guess={isCurrentGuess ? currentGuess : guess ?? ""}
-          />
-        );
-      })}
-    </div>
+    <>
+      <div className="board flex flex-col gap-3 animate__animated animate__slideInLeft">
+        {guesses.map((guess, i) => {
+          const isCurrentGuess = i === guesses.findIndex((val) => val == null);
+          return (
+            <Row
+              solution={solution}
+              isFinal={!currentGuess && guess != null}
+              key={i}
+              rowKey={i}
+              guess={isCurrentGuess ? currentGuess : guess ?? ""}
+            />
+          );
+        })}
+      </div>
+      <div className="flex justify-center items-center m-4 p-4 animate__animated animate__zoomIn animate__delay-1s">
+        <h3 className="text-lg font-medium">{message.current}</h3>
+      </div>
+    </>
   );
 }
 
