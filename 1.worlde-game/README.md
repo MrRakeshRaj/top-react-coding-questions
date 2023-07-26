@@ -11,7 +11,7 @@ The green color tells the user that the letter is in the secret word and in the 
 
 <img width="526" alt="wordle rules" src="https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/edf96360-549b-4a7f-904f-df776bb86406">
 
-## Explanation & Setup
+## Explanation
 
 1. Setting up Developement Server 
 The project uses the Vite build tool via the Command Line Interface (CLI) for scaffolding. 
@@ -121,6 +121,62 @@ for (let i = 0; i < WORD_LENGTH; i++) {
   }
 ```
 getting each char from the guess array and checking the same with solution string and respectively giving the class names.
+
+
+##Tech Stack Used
+React, Vite, Typescript, Tailwind CSS, Animate CSS
+
+## Deployment
+View my deployment on Netlify => [Live Demo]().
+
+## Setup
+
+To run the Weather App locally on your machine, follow these steps:
+
+1. Make sure you have Node.js installed on your machine.
+2. Clone this repository or download the source code.
+
+```
+https://github.com/MrRakeshRaj/top-react-coding-questions.git
+```
+3. Open a terminal and navigate to the project directory.
+
+```
+cd 1.wordle-game
+```
+4.Run the following command to install the project dependencies:
+
+```
+npm install
+```
+
+5.Start the development server with the following command:
+```
+npm run dev
+```
+6. Open the app in your browser:
+- Open http://localhost:5173/ in your preferred browser.
+- The wordle App should now be running and accessible in your browser.
+
+## Usage
+- Upon opening the application, the user is presented with the wordle board.
+- The User can start typing on the keyboard for guessing the word
+- Once the guess is made and Enter is pressed the Row displays the color based on the match with the solution as mentioned
+- The User can continue guessing the solution.
+- I user exhuasts all the rows by filling the guesses then, game ends and the the user loses the game. if the correct guess is made then game ends and the user wins the game.
+
+## Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+## External Links
+[How to setup tailwind CSS in raect vite project](https://www.freecodecamp.org/news/how-to-install-tailwindcss-in-react/)
+[How to use Animate CSS in React](https://animate.style/)
+
+## License
+This project is licensed under the [MIT License](https://github.com/MrRakeshRaj/top-react-coding-questions/blob/main/LICENSE).
+
+
+
   
 
 
