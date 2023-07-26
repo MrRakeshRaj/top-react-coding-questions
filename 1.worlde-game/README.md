@@ -11,6 +11,19 @@ The green color tells the user that the letter is in the secret word and in the 
 
 <img width="526" alt="wordle rules" src="https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/edf96360-549b-4a7f-904f-df776bb86406">
 
+## Screencast
+
+https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/f68252d9-3297-4867-93a0-b2b19f4ef642
+
+https://github.com/MrRakeshRaj/top-react-coding-questions/assets/76464379/02da95fe-0108-40bc-bb73-402a0bdd160f
+
+
+## Tech Stack Used
+React, Vite, Typescript, Tailwind CSS, Animate CSS
+
+## Deployment
+View my deployment on Netlify => [Live Demo]().
+
 ## Explanation
 
 1. Setting up Developement Server 
@@ -122,13 +135,6 @@ for (let i = 0; i < WORD_LENGTH; i++) {
 ```
 getting each char from the guess array and checking the same with solution string and respectively giving the class names.
 
-
-##Tech Stack Used
-React, Vite, Typescript, Tailwind CSS, Animate CSS
-
-## Deployment
-View my deployment on Netlify => [Live Demo]().
-
 ## Setup
 
 To run the Weather App locally on your machine, follow these steps:
@@ -169,8 +175,8 @@ npm run dev
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
 ## External Links
-[How to setup tailwind CSS in raect vite project](https://www.freecodecamp.org/news/how-to-install-tailwindcss-in-react/)
-[How to use Animate CSS in React](https://animate.style/)
+- [How to setup tailwind CSS in raect vite project](https://www.freecodecamp.org/news/how-to-install-tailwindcss-in-react/)
+- [How to use Animate CSS in React](https://animate.style/)
 
 ## License
 This project is licensed under the [MIT License](https://github.com/MrRakeshRaj/top-react-coding-questions/blob/main/LICENSE).
