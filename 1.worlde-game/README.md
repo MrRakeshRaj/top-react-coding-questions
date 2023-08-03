@@ -174,7 +174,7 @@ npm run dev
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
 ## External Links
-- [How to setup tailwind CSS in raect vite project](https://www.freecodecamp.org/news/how-to-install-tailwindcss-in-react/)
+- [How to setup tailwind CSS in react vite project](https://www.freecodecamp.org/news/how-to-install-tailwindcss-in-react/)
 - [How to use Animate CSS in React](https://animate.style/)
 
 ## License
